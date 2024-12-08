@@ -2,20 +2,131 @@
 @tailwind components;
 @tailwind utilities;
 
+/* 다크 모드 색상 정의 */
 :root {
-  --background: #0a0a0a; /* 다크 모드 배경색 */
-  --foreground: #ededed; /* 다크 모드 텍스트 색상 */
+  --background: #121212; /* 메인 배경색: 딥 블랙 */
+  --foreground: #E4E4E7; /* 기본 텍스트 색상: 연한 회색 */
+  --accent: #3B82F6; /* 포인트 색상: 밝은 블루 */
+  --secondary: #1E293B; /* 보조 색상: 다크 네이비 */
+  --card-bg: #1A1A1A; /* 카드 배경: 어두운 회색 */
+  --border: #3B3B3B; /* 경계선 색상 */
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    --background: #ffffff; /* 라이트 모드 배경색 */
-    --foreground: #171717; /* 라이트 모드 텍스트 색상 */
-  }
-}
-
+/* 기본 HTML 스타일 */
 body {
+  background-color: var(--background);
   color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* 링크 스타일 */
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: var(--foreground);
+}
+
+/* 버튼 스타일 */
+button {
+  background-color: var(--accent);
+  color: var(--background);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: var(--secondary);
+  transform: scale(1.05);
+}
+
+/* 카드 스타일 */
+.card {
+  background-color: var(--card-bg);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border);
+}
+
+.card-title {
+  color: var(--accent);
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.card-content {
+  color: var(--foreground);
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+/* 헤더 스타일 */
+header {
+  background-color: var(--secondary);
+  color: var(--foreground);
+  padding: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* 섹션 스타일 */
+section {
+  padding: 2rem;
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+/* 테이블 스타일 */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+th, td {
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+}
+
+th {
+  background-color: var(--secondary);
+  color: var(--foreground);
+}
+
+td {
+  background-color: var(--card-bg);
+  color: var(--foreground);
+}
+
+/* 폼 필드 스타일 */
+input, textarea {
+  background-color: var(--card-bg);
+  color: var(--foreground);
+  border: 1px solid var(--border);
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+input:focus, textarea:focus {
+  border-color: var(--accent);
+}
+
+/* Footer 스타일 */
+footer {
+  background-color: var(--secondary);
+  color: var(--foreground);
+  padding: 1rem;
+  text-align: center;
+  border-top: 1px solid var(--border);
 }

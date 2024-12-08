@@ -1,7 +1,10 @@
+// src/app/layout.tsx
+// src/app/layout.tsx
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "../app/globals.css";
 import Header from "../app/components/Header";
+import SplineBackground from "../app/SplineBackground"; // 추가
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -29,12 +32,16 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="flex">
+        {/* Spline 3D 배경 */}
+        <SplineBackground />
+
+        {/* 레이아웃 */}
+        <div className="flex relative">
           {/* Left Sidebar */}
           <Header />
 
           {/* Main Content */}
-          <main className="flex-1 p-6 bg-gray-100">{children}</main>
+          <main className="flex-1 p-6 bg-transparent">{children}</main>
         </div>
       </body>
     </html>
