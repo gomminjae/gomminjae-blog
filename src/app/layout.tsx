@@ -4,7 +4,6 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "../app/globals.css";
 import Header from "../app/components/Header";
-import SplineBackground from "../app/SplineBackground"; // 추가
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
