@@ -11,12 +11,6 @@ export default function HomePage() {
       <Spline scene="https://prod.spline.design/VxnxPvzwsP66B9kk/scene.splinecode" />
 
       {/* 콘텐츠 */}
-      <div className="absolute top-10 left-10 z-10 text-white">
-        <h1 className="text-4xl font-bold">Welcome to My Blog</h1>
-        <p className="text-lg mt-4">
-          Discover amazing 3D content powered by Spline.
-        </p>
-      </div>
     </div>
   );
 }

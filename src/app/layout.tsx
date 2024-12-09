@@ -33,7 +33,6 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {/* Spline 3D 배경 */}
-        <SplineBackground />
 
         {/* 레이아웃 */}
         <div className="flex relative">
