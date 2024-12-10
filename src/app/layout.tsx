@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "../app/globals.css";
 import Header from "../app/components/Header";
+import Footer from "../app/components/Footer";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -32,14 +33,17 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {/* Spline 3D 배경 */}
-
+        
         {/* 레이아웃 */}
-        <div className="flex relative">
-          {/* Left Sidebar */}
+        <div className="flex flex-col min-h-screen relative">
+          {/* Header */}
           <Header />
-
+          
           {/* Main Content */}
           <main className="flex-1 p-6 bg-transparent">{children}</main>
+
+          {/* Footer */}
+          <Footer />
         </div>
       </body>
     </html>
