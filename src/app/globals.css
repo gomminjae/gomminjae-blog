@@ -10,6 +10,8 @@
   --secondary: #1E293B; /* 보조 색상: 다크 네이비 */
   --card-bg: #1A1A1A; /* 카드 배경: 어두운 회색 */
   --border: #3B3B3B; /* 경계선 색상 */
+  --highlight-bg: #1E40AF; /* 강조 배경: 진한 블루 */
+  --highlight-fg: #93C5FD; /* 강조 텍스트: 밝은 하늘색 */
 }
 
 /* 기본 HTML 스타일 */
@@ -29,7 +31,7 @@ a {
 
 a:hover {
   text-decoration: underline;
-  color: var(--foreground);
+  color: var(--highlight-fg);
 }
 
 /* 버튼 스타일 */
@@ -45,8 +47,9 @@ button {
 }
 
 button:hover {
-  background-color: var(--secondary);
+  background-color: var(--highlight-bg);
   transform: scale(1.05);
+  color: var(--highlight-fg);
 }
 
 /* 카드 스타일 */
@@ -76,6 +79,23 @@ header {
   color: var(--foreground);
   padding: 1rem;
   border-bottom: 1px solid var(--border);
+}
+
+header .logo {
+  color: var(--accent);
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+header nav a {
+  color: var(--foreground);
+  margin: 0 1rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+header nav a:hover {
+  color: var(--accent);
 }
 
 /* 섹션 스타일 */
@@ -120,6 +140,7 @@ input, textarea {
 
 input:focus, textarea:focus {
   border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
 }
 
 /* Footer 스타일 */
@@ -131,8 +152,17 @@ footer {
   border-top: 1px solid var(--border);
 }
 
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
 
+footer a:hover {
+  text-decoration: underline;
+  color: var(--highlight-fg);
+}
 
+/* 애니메이션 */
 @keyframes slideLeftExpand {
   0% {
     transform: translateX(0);
