@@ -2,7 +2,7 @@ import { getAllPosts } from "@/lib/markdown";
 import Link from "next/link";
 
 export default async function HomePage() {
-  const posts = getAllPosts(); // 서버에서 Markdown 파일 읽기
+  const posts = await Promise.resolve(getAllPosts()); // 비동기로 데이터를 처리
 
   return (
     <div className="relative w-full min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
