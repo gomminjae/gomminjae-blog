@@ -2,15 +2,8 @@ import { getPostBySlug } from "@/lib/markdown";
 import { remark } from "remark";
 import remarkHtml from "remark-html";
 
-interface PostPageProps {
-  params: {
-    slug: string;
-  };
-}
-
-export default async function PostPage({ params }: PostPageProps) {
-  const { slug } = await Promise.resolve(params);
-
+export default async function PostPage({ params }: { params: Promise<{ slug: string }>  }) {
+  const slug = (await params).slug; 
   if (!slug) {
     throw new Error("Slug is missing in params");
   }
