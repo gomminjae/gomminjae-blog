@@ -2,10 +2,8 @@ import { getPostBySlug, getAllPosts } from "@/lib/markdown";
 import { remark } from "remark";
 import remarkHtml from "remark-html";
 
-// `generateStaticParams` 함수에서 반환 타입 정의
-export async function generateStaticParams() {
+export async function generateStaticParams(): Promise<Array<{ slug: string }>> {
   const posts = getAllPosts();
-
   return posts.map((post) => ({
     slug: post.slug,
   }));
