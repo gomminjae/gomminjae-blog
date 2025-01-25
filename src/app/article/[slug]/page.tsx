@@ -2,8 +2,9 @@ import { getPostBySlug, getAllPosts } from "@/lib/markdown";
 import { remark } from "remark";
 import remarkHtml from "remark-html";
 
-export async function generateStaticParams(): Promise<Array<{ slug: string }>> {
+export async function generateStaticParams() {
   const posts = getAllPosts();
+
   return posts.map((post) => ({
     slug: post.slug,
   }));
@@ -16,11 +17,13 @@ interface PostPageProps {
 }
 
 export default async function PostPage({ params }: PostPageProps) {
-  if (!params?.slug) {
+  const { slug } = params;
+
+  if (!slug) {
     throw new Error("Slug is missing in params");
   }
 
-  const post = getPostBySlug(params.slug);
+  const post = getPostBySlug(slug);
 
   const processedContent = await remark().use(remarkHtml).process(post.content);
   const contentHtml = processedContent.toString();
