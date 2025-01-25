@@ -2,19 +2,22 @@ import { getPostBySlug, getAllPosts } from "@/lib/markdown";
 import { remark } from "remark";
 import remarkHtml from "remark-html";
 
-interface Props {
-  params: {
-    slug: string;
-  };
-}
-
-export async function generateStaticParams() {
+// `generateStaticParams` 함수에서 반환 타입 정의
+export async function generateStaticParams(): Promise<{ slug: string }[]> {
   const posts = getAllPosts();
   return posts.map((post) => ({
     slug: post.slug,
   }));
 }
 
+// 서버 컴포넌트에서 사용되는 타입 정의
+interface Props {
+  params: {
+    slug: string;
+  };
+}
+
+// 서버 컴포넌트 구현
 export default async function PostPage({ params }: Props) {
   const post = getPostBySlug(params.slug);
 
