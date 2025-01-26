@@ -8,15 +8,19 @@
     "start": "next start"
   },
   "dependencies": {
+    "@next/mdx": "^15.1.6",
     "@splinetool/react-spline": "^4.0.0",
     "@tailwindcss/typography": "^0.5.15",
     "gray-matter": "^4.0.3",
+    "highlight.js": "^11.11.1",
     "next": "15.0.3",
     "react": "19.0.0-rc-66855b96-20241106",
     "react-dom": "19.0.0-rc-66855b96-20241106",
+    "rehype-highlight": "^7.0.1",
     "rehype-prism": "^2.3.3",
     "rehype-stringify": "^10.0.1",
     "remark": "^15.0.1",
+    "remark-highlight.js": "^7.0.1",
     "remark-html": "^16.0.1",
     "remark-rehype": "^11.1.1"
   },

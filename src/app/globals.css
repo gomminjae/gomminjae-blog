@@ -1,3 +1,5 @@
+
+@import "highlight.js/styles/github-dark.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -193,3 +195,45 @@ footer a:hover {
   opacity: 0;
   animation: fadeIn 2s ease-in-out 2s forwards; /* 2초 딜레이 후 실행 */
 }
+
+
+
+
+
+
+.hljs {
+  color: #c9d1d9; /* 기본 텍스트 색상 */
+}
+
+/* 키워드 */
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-title {
+  color: #ff7b72; /* 키워드 강조 색상 */
+}
+
+/* 문자열 */
+.hljs-string {
+  color: #a5d6ff; /* 문자열 강조 색상 */
+}
+
+/* 주석 */
+.hljs-comment {
+  color: #8b949e; /* 주석 강조 색상 */
+  font-style: italic;
+}
+
+/* 함수 */
+.hljs-function {
+  color: #d2a8ff;
+}
+
+/* 숫자 */
+.hljs-number {
+  color: #79c0ff;
+}
+
+/* 변경하고 싶은 더 많은 스타일을 아래에 추가 */
+
+
+
