@@ -26,7 +26,7 @@ body {
 
 /* 링크 스타일 */
 a {
-  color: var(--accent);
+  color: white;
   text-decoration: none;
   transition: color 0.3s ease;
 }

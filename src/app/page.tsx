@@ -2,7 +2,7 @@ import { getAllPosts } from "@/lib/markdown";
 import Link from "next/link";
 
 export default function HomePage() {
-  const posts = getAllPosts(); // 동기적으로 데이터 가져오기
+  const posts = getAllPosts(); 
 
   return (
     <div className="relative w-full min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
