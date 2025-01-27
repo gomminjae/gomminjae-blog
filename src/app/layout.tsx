@@ -18,6 +18,9 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "Gomminjae Blog",
   description: "Welcome to My Tech Blog",
+  icons: {
+    icon: "/favicon.svg",
+  }
 };
 
 export default function RootLayout({
