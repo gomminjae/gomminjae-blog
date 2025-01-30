@@ -3,9 +3,6 @@ title: "SwiftyCorasick의 성능 개선 (Swift Concurrency)"
 date: "2025-01-30"
 description: "GCD 기반 비속어 필터링의 성능 한계를 극복하기 위해 Swift Concurrency를 적용해 성능을 극대화한 사례를 정리했습니다."
 ---
-
-# Swift Concurrency를 활용한 비속어 필터링 성능 개선
-
 ### 개요 및 기술 선정 이유
 
 기존 GCD 기반의 비속어 필터링은 실행 시간이 길어 실사용에 부담이 컸다. 특히 14,000자 이상의 긴 텍스트를 처리할 때 7초 이상 소요되면서 사용자 경험에 문제가 발생할 것으로 판단했다.
