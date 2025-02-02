@@ -6,7 +6,7 @@ const BlogPage = () => {
     const posts = getAllPosts();
 
     return (
-        <div className="max-w-4xl mx-auto px-4 py-8">
+        <div className="w-full max-w-4xl mx-auto px-4 sm:px-5 md:px-20 py-8">
             <h1 className="text-4xl font-bold mb-6">Blog Page</h1>
             <p className="mb-10 text-lg text-gray-600">Bon Voyage</p>
             <div className="space-y-8">
