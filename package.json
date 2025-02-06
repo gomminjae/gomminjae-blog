@@ -20,6 +20,7 @@
     "rehype-prism": "^2.3.3",
     "rehype-stringify": "^10.0.1",
     "remark": "^15.0.1",
+    "remark-gfm": "^4.0.0",
     "remark-highlight.js": "^7.0.1",
     "remark-html": "^16.0.1",
     "remark-rehype": "^11.1.1",

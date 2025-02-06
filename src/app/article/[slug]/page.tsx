@@ -2,6 +2,7 @@ import { getPostBySlug } from "@/lib/markdown";
 import { remark } from "remark";
 import remarkHtml from "remark-html";
 import hljs from "highlight.js";
+import remarkGfm from "remark-gfm";
 
 export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
   const slug = (await params).slug; 
@@ -17,6 +18,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
 
   // Markdown을 HTML로 변환
   const processedContent = await remark()
+    .use(remarkGfm) // ✅ 테이블 지원 활성화
     .use(remarkHtml, {
       sanitize: false,
     })

@@ -52,3 +52,39 @@
 
 
 
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 16px;
+  color: #e0e0e0; /* 기본 글자색 */
+  text-align: center; /* 텍스트 가운데 정렬 */
+}
+
+th, td {
+  border: 1px solid #444; /* 셀 경계선 */
+  padding: 15px; /* 여백 조정 */
+}
+
+th {
+  background-color: white; /* 헤더 배경색 */
+  font-weight: bold;
+  color: #ffffff; /* 헤더 글자색 */
+  text-align: center; /* 헤더 가운데 정렬 */
+}
+
+td {
+  
+  color: #f5f5f5; /* 본문 글자색 */
+  text-align: left; /* 본문 텍스트 왼쪽 정렬 */
+}
+
+
+code {
+  font-family: 'Courier New', Courier, monospace;
+  background-color: #1e1e1e; /* 코드 블록 배경 */
+  color: #ffcc00; /* 코드 블록 글자색 */
+  padding: 4px 6px;
+  border-radius: 4px;
+}
