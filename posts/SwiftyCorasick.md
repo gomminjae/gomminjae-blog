@@ -1,15 +1,22 @@
 ---
-title: "SwiftyCorasick의 성능 개선 (Swift Concurrency)"
+title: "SwiftyCorasick: GCD에서 Swift Concurrency로 성능을 30배 개선한 사례"
 date: "2025-01-30"
 description: "GCD 기반 비속어 필터링의 성능 한계를 극복하기 위해 Swift Concurrency를 적용해 성능을 극대화한 사례를 정리했습니다."
 ---
 ### 개요 및 기술 선정 이유
 
-기존 GCD 기반의 비속어 필터링은 실행 시간이 길어 실사용에 부담이 컸다. 특히 14,000자 이상의 긴 텍스트를 처리할 때 7초 이상 소요되면서 사용자 경험에 문제가 발생할 것으로 판단했다.
+기존 GCD 기반 비속어 필터링은 긴 텍스트 처리에서 심각한 성능 문제가 있었습니다.  
+특히, 14,000자 이상의 텍스트를 처리하는 데 약 7초가 소요되며 사용자 경험에 부정적인 영향을 미칠 가능성이 컸습니다.
 
-GCD는 스레드 간 컨텍스트 전환 비용이 크고, DispatchQueue를 통한 비동기 처리가 많아질수록 오히려 성능이 저하될 가능성이 있었다. 반면, Swift Concurrency는 경량 스레드 기반의 async/await을 활용해 컨텍스트 전환 비용을 최소화하고, 락 경합 없이 안정적인 동시성 처리가 가능하다. 또한, Apple이 Swift Concurrency를 공식적인 비동기 모델로 채택한 만큼, 유지보수성과 확장성 측면에서도 유리했다.
+**문제 원인:**  
+1. **GCD의 컨텍스트 전환 비용**: DispatchQueue의 스레드 전환이 잦아질수록 성능 저하가 발생.  
+2. **효율적인 동시성 처리 부족**: GCD는 경량 스레드 기반이 아니며, 락 경합이 빈번하게 발생.
 
-이러한 이유로 Swift Concurrency를 적용했고, 결과적으로 처리 시간이 30배 이상 단축되며 실사용이 가능한 성능을 확보할 수 있었다.
+**해결책:**  
+Swift Concurrency는 경량 스레드를 기반으로 한 **async/await** 모델을 제공하여 GCD의 한계를 극복할 수 있습니다.  
+이를 통해 컨텍스트 전환 비용을 줄이고, 복잡한 락 경합 없이 동시성을 효과적으로 처리할 수 있습니다.
+
+Swift Concurrency를 적용한 결과, 처리 시간이 **7초 → 0.2초**로 단축되었으며, 성능은 약 **30배 이상** 개선되었습니다.
 
 ### 기존 GCD 기반 비속어 필터링
 
@@ -45,11 +52,20 @@ public func processTextAsync(_ text: String, completion: @Sendable @escaping (St
 
 ### Swift Concurrency 적용 후 개선
 
-Swift Concurrency의 async/await를 적용하여 불필요한 GCD 호출을 제거하고 최적화했다. 
+Swift Concurrency는 경량 스레드 기반의 **async/await** 모델을 제공하여, GCD의 단점을 보완합니다.  
+이를 적용한 결과, 긴 텍스트 처리 성능이 **30배 이상** 개선되었으며, 코드 가독성 또한 크게 향상되었습니다.
+
+#### Swift Concurrency 방식의 장점
+1. **경량 스레드 기반으로 컨텍스트 전환 비용 감소**
+   - GCD보다 경량화된 동시성 모델로, 스레드 전환 비용을 최소화.
+2. **락 경합 제거**  
+   - 동시성 문제를 `Task` 단위로 분리해 락을 사용할 필요가 없어짐.
+3. **자연스러운 비동기 처리**  
+   - 콜백 대신 async/await로 처리 흐름이 간결하고 직관적임.
 
 #### 개선 후 성능 테스트 결과
-- **14000자 테스트**: 0.217초
-- **7000자 테스트**: 0.089초
+- **14000자 테스트:** 0.217초
+- **7000자 테스트:** 0.089초
 
 ```swift
 public func processTextAsync(_ text: String) async -> String {
@@ -103,7 +119,9 @@ private func filterUsingRegex(text: String) async -> String {
 ```
 
 ### 결론
-- 기존 GCD 방식에서 Swift Concurrency 방식으로 개선 후 성능이 **약 30배 이상 향상**됨
-- 불필요한 DispatchQueue 호출 제거로 코드 가독성과 유지보수성이 향상됨
-- async/await을 적용하여 더 자연스럽고 직관적인 비동기 처리가 가능해짐
 
+- 기존 GCD 방식에서 Swift Concurrency 방식으로 전환한 결과, 처리 속도가 **약 30배 이상 향상**되었습니다.
+- 경량 스레드를 활용하여 동시성 처리의 효율을 극대화하고, 락 경합 문제를 제거했습니다.
+- async/await으로 코드의 가독성과 유지보수성이 개선되었으며, 디버깅 또한 간편해졌습니다.
+
+Swift Concurrency는 복잡한 비동기 작업에서 단순하고 강력한 동시성 처리를 제공하며, 실시간 성능이 중요한 애플리케이션에 적합한 선택임을 확인했습니다.
