@@ -2,6 +2,9 @@ import { getPostBySlug } from "@/lib/markdown";
 import { remark } from "remark";
 import remarkHtml from "remark-html";
 import hljs from "highlight.js";
+import rehypeRaw from "rehype-raw"; 
+import remarkRehype from "remark-rehype";
+import rehypeStringify from "rehype-stringify";
 import remarkGfm from "remark-gfm";
 
 export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -18,10 +21,10 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
 
   // Markdown을 HTML로 변환
   const processedContent = await remark()
-    .use(remarkGfm) // ✅ 테이블 지원 활성화
-    .use(remarkHtml, {
-      sanitize: false,
-    })
+    .use(remarkGfm) // ✅ GFM 지원 (테이블, 체크리스트 등)
+    .use(remarkRehype, { allowDangerousHtml: true }) // ✅ HTML 태그 지원
+    .use(rehypeRaw) // ✅ raw HTML 태그 처리
+    .use(rehypeStringify) // ✅ 최종 HTML 생성
     .process(post.content);
   const contentHtml = processedContent.toString();
 
