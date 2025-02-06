@@ -1,7 +1,7 @@
 ---
 title: "Swift 욕설 필터링: N-gram + Aho-Corasick 구현 실패와 개선 과정 (욕설주의)"
 date: "2025-02-26"
-description: "GCD 기반 비속어 필터링의 성능 한계를 극복하기 위해 Swift Concurrency를 적용해 성능을 극대화한 사례를 정리했습니다."
+description: "Aho-Corasick 단독으로 실패한 이유와 N-gram을 추가하게 된 과정을 정리했습니다."
 ---
 ## 목표
 Swift에서 **욕설 필터링 시스템**을 구현하면서 겪은 **실패 사례**와 **해결 과정**을 기록합니다.  
