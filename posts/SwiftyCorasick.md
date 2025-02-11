@@ -2,6 +2,7 @@
 title: "SwiftyCorasick: GCD에서 Swift Concurrency로 성능을 30배 개선한 사례"
 date: "2025-01-30"
 description: "GCD 기반 비속어 필터링의 성능 한계를 극복하기 위해 Swift Concurrency를 적용해 성능을 극대화한 사례를 정리했습니다."
+tag: ["Swift","Algorithm"]
 ---
 ### 개요 및 기술 선정 이유
 
