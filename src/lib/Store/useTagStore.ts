@@ -19,18 +19,22 @@ const useTagStore = create<TagStore>((set, get) => ({
     // 태그 색상을 가져오는 함수 (없으면 자동 생성)
     getTagColor: (tag) => {
         const state = get();
-        return state.tagColors[tag] || state.addTagColor(tag);
+        if (!state.tagColors[tag]) {
+            state.addTagColor(tag);
+        }
+        return state.tagColors[tag] || "#000000"; // 기본 색상 지정
     },
 
     // 새로운 태그가 추가될 경우 랜덤 색상 부여
-    addTagColor: (tag) =>
+    addTagColor: (tag) => {
         set((state) => {
             if (!state.tagColors[tag]) {
                 const newColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
                 return { tagColors: { ...state.tagColors, [tag]: newColor } };
             }
             return state;
-        }),
+        });
+    },
 }));
 
 export default useTagStore;
