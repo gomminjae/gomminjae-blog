@@ -1,7 +1,7 @@
 "use client"; // 클라이언트 컴포넌트 지정
 
 import Link from "next/link";
-import useTagStore from "@/lib/store/useTagStore";
+import useTagStore from "../../lib/store/useTagStore";
 
 export default function BlogList({ posts }: { posts: any[] }) {
     const { getTagColor, addTagColor } = useTagStore(); // Zustand 사용
