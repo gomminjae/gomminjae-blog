@@ -1,4 +1,4 @@
-
+"use client";
 import { create } from "zustand";
 
 interface TagStore {
@@ -35,5 +35,4 @@ const useTagStore = create<TagStore>((set, get) => ({
         });
     },
 }));
-
 export default useTagStore;
