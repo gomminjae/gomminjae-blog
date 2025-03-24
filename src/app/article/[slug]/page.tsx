@@ -15,7 +15,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
 
   const post = getPostBySlug(slug);
 
-  if (!post) {
+  if (!post) {ß
     throw new Error(`Post not found for slug: ${slug}`);
   }
 
