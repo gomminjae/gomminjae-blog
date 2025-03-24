@@ -12,7 +12,8 @@ const useTagStore = create<TagStore>((set, get) => ({
    tagColors: {
     "Next.js": "#6DA3F9",   // 부드러운 파스텔 블루
     "Swift": "#F05138",     // 기존 색 유지 (Swift 오렌지)
-    "Algorithm": "#8AC6D1"  // 청록 계열의 부드러운 파스텔 컬러
+    "Algorithm": "#8AC6D1",  // 청록 계열의 부드러운 파스텔 컬러
+    "Tuist": "	#5E44FF"
    },
 
     // 태그 색상을 가져오는 함수 (없으면 자동 생성)
